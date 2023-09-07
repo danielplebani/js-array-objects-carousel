@@ -41,6 +41,8 @@ function scrollImage() {
   })
 }
 
+
+
 //Define the slides list 
 const slides = [
     {
@@ -71,7 +73,7 @@ for (let i = 0; i < slides.length; i++) {
   const slidePath = slides[i];
   
   // for each slide we create the markup
-  const slideMarkup = `<img class="${activeSlide === i ? 'active' : '' }" src="/asset/img/${slidePath.foto}">`
+  const slideMarkup = `<img class="${activeSlide === i ? 'active' : '' }" src="asset/img/${slidePath.foto}">`
 
   sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup)
 }
@@ -79,7 +81,7 @@ const slidesImages = document.querySelectorAll('.slider .images > img')
 const thumbsElement = document.querySelector('.thumbnails')
 for (let i = 0; i < slides.length; i++) {
   const thumbPath = slides[i];
-  const thumbMarkup = `<img class="thumb ${activeSlide === i ? 'active' : ''}" src="/asset/img/${thumbPath.foto}">`
+  const thumbMarkup = `<img class="thumb ${activeSlide === i ? 'active' : ''}" src="asset/img/${thumbPath.foto}">`
   
   thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup)
 }

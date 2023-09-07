@@ -11,30 +11,13 @@ img
 	display: block;
 }
 
-.container
-{
-	width: 70%;
-	max-width: 1176px;
-	margin: auto
-}
-
-.row
-{
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 -1rem
-}
-
 /* CSS Nesting feature (NEW) */
 .slider
 {
-	position: relative;
-	margin-top: 2rem;
 	height: 450px;
 
 	& .images
 	{
-		flex-grow: 1;
 
 		& img.active
 		{
@@ -48,21 +31,14 @@ img
 		{
 			display: none;
 		}
-
 	}
-
 }
 
 .slider .controls
 {
-	position: absolute;
 	top: 0;
 	left: 50%;
 	transform: translateX(-50%);
-	height: 100%;
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
 }
 
 .controls .prev,
@@ -72,14 +48,6 @@ img
 	height: 26px;
 	background-color: white;
 	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.d-flex
-{
-	display: flex;
 }
 
 /* Thumbs */
