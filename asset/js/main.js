@@ -1,10 +1,47 @@
-/*
-Riprendiamo il live coding visto in classe un pó di tempo fá sul carosello di immagini e rifacciamolo, questa volta usando gli oggetti.
-*/
+//Riprendiamo il live coding visto in classe un pó di tempo fá sul carosello di immagini e rifacciamolo, questa volta usando gli oggetti.
 
-/* 
+//a timing function starts and every few seconds it scrolls through the images in the Carousel 
+const autoScrollNext = setInterval(scrollImage, 5000)
+function scrollImage() {
+    // select the current slide
+  const currentSlide = slidesImages[activeSlide]
+  // remove the active class from the current slide
+  currentSlide.classList.remove('active')
 
-/* Define the slides list */
+  // select the active thumb
+  const currentThumb = document.querySelector('.thumbnails > img.active')
+  // remove the active class from the active thumb
+  currentThumb.classList.remove('active')
+
+  // activeSlide = 4
+
+  if (activeSlide === slidesImages.length - 1) {
+    activeSlide = 0
+    // activeSlide = 5
+  } else {
+    // increment the activeSlide of 1
+    activeSlide++
+  }
+
+  // select the next slide
+  const nextSlide = slidesImages[activeSlide]
+  // add the active class to the next slide
+  nextSlide.classList.add('active')
+
+  /* TODO */
+
+  // select the next thumb
+  const nextThumb = document.querySelectorAll('.thumb')[activeSlide]
+  // add to the next thumb the active class
+  nextThumb.classList.add('active');
+
+  const inverAutoOrder = document.querySelector('button');
+  inverAutoOrder.addEventListener('click', function(){
+    clearInterval(autoScrollNext)
+  })
+}
+
+//Define the slides list 
 const slides = [
     {
         foto : '01.webp'
@@ -21,21 +58,14 @@ const slides = [
     {
         foto : '05.webp'
     }
-]
-
+];
 let activeSlide = 0;
-
 // select the dom elements
 const sliderImagesEl = document.querySelector('.slider .images')
 const prevEl = document.querySelector('.prev')
 const nextEl = document.querySelector('.next')
 
-
-
-
-
-
-/* Print all images into the dom */
+/*Print all images into the dom */
 // loop over the slides 
 for (let i = 0; i < slides.length; i++) {
   const slidePath = slides[i];
@@ -45,11 +75,8 @@ for (let i = 0; i < slides.length; i++) {
 
   sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup)
 }
-
 const slidesImages = document.querySelectorAll('.slider .images > img')
-
 const thumbsElement = document.querySelector('.thumbnails')
-
 for (let i = 0; i < slides.length; i++) {
   const thumbPath = slides[i];
   const thumbMarkup = `<img class="thumb ${activeSlide === i ? 'active' : ''}" src="/asset/img/${thumbPath.foto}">`
@@ -58,12 +85,8 @@ for (let i = 0; i < slides.length; i++) {
 }
 
 
-
-
-
-
 // intercept click on the next icon 
-nextEl.addEventListener('click', function(){
+nextEl.addEventListener('click', function nextImage(){
 
   // select the current slide
   const currentSlide = slidesImages[activeSlide]
@@ -101,11 +124,7 @@ nextEl.addEventListener('click', function(){
   // add to the next thumb the active class
   nextThumb.classList.add('active')
 })
-
-
-
-
-prevEl.addEventListener('click', function () {
+prevEl.addEventListener('click', function() {
 
   // select the current slide
   const currentSlide = slidesImages[activeSlide]
